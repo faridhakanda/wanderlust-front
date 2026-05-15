@@ -1,3 +1,4 @@
+import BookingCard from "@/components/bookingCard";
 import { DeleteDestination } from "@/components/delDestination";
 import { EditForm } from "@/components/editForm";
 import { deletePlace } from "@/lib/actions";
@@ -26,19 +27,28 @@ const DetailsPage = async ({ params }) => {
       </div>
       <div className="bg-slate-50 px-2 py-2 mx-auto my-2 rounded-md shadow-sm">
         <div className="w-xl px-2 py-2">
-          <h2>{placeDetail.destinationName}</h2>
-          <p>{placeDetail.country}</p>
-          <p>{placeDetail.duration}</p>
-          <p>${placeDetail.price}</p>
           <Image
-            className="w-full h-fit rounded-md"
+            className="w-full h-fit "
             src={placeDetail.imageUrl}
             alt={placeDetail.destinationName}
             width={500}
             height={400}
           />
-          <p>{placeDetail.description}</p>
+          <div className="flex my-2 justify-between">
+            <div className="w-84">
+                <h2>{placeDetail.destinationName}</h2>
+                <p>{placeDetail.country}</p>
+                <p>{placeDetail.duration}</p>
+                <p>${placeDetail.price}</p>
+                <p>{placeDetail.description}</p>
+            </div>
+            
+            <BookingCard destination={placeDetail}/>
+          </div>
+          
         </div>
+        
+
         <div className="my-1 space-y-2">
           <Link
             className="mx-auto text-center flex bg-cyan-500 px-2 py-2 rounded-md justify-center"

@@ -33,3 +33,9 @@ export const getPlaceDetailsById = async(id) => {
     const data = await res.json();
     return data;
 }
+
+export const myBookingDestinations = async(id) => {
+    const res = await fetch(`http://localhost:5000/booking/${id}`);
+    const data = await res.json();
+    return data;
+}
