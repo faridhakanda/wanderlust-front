@@ -4,7 +4,7 @@
 // export const EditDestination = async(placeID, formData) => {
 //     'use server';
 //     const editPlace = Object.fromEntries(formData.entries());
-//     const res = await fetch(`http://localhost:5000/destination/${placeID}`, {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${placeID}`, {
 //         method: 'PATCH',
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ export const deletePlace = async(placeID) => {
     const { token } = await auth.api.getToken({
         headers: await headers()
     })
-    const res = await fetch(`http://localhost:5000/destination/${placeID}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${placeID}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

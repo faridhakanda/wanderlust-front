@@ -7,7 +7,7 @@ import { authClient } from "./auth-client";
 
 // export const pushDestinationData = async(destination) => {
 //     'use server';
-//     const res = await fetch('http://localhost:5000/destination', {
+//     const res = await fetch('${process.env.NEXT_PUBLIC_SERVER_URL}/destination', {
 //         method: 'POST',
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ import { authClient } from "./auth-client";
 // })
 
 export const getAllDestinationList = async() => {
-    const res = await fetch('http://localhost:5000/destination')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`)
     const data = res.json();
     return data;
 }
@@ -42,7 +42,7 @@ export const getPlaceDetailsById = async(id) => {
     })
     //console.log("token by Farid: ", token);
     
-    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
         headers: {
             authorization: `Bearer ${token}`
         }
@@ -56,7 +56,7 @@ export const myBookingDestinations = async(id) => {
     const { token } = await auth.api.getToken({
         headers: await headers()
     })
-    const res = await fetch(`http://localhost:5000/booking/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

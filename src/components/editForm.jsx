@@ -37,7 +37,7 @@ export function EditForm({ destination }) {
     const formData = new FormData(e.currentTarget);
     const destinationEdit = Object.fromEntries(formData.entries());
     const { data: tokenData } = await authClient.token()
-    const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
