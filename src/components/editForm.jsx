@@ -1,6 +1,7 @@
 "use client";
 
 import { EditDestination } from "@/lib/actions";
+import { authClient } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import {
   Button,
@@ -35,11 +36,12 @@ export function EditForm({ destination }) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destinationEdit = Object.fromEntries(formData.entries());
-    
+    const { data: tokenData } = await authClient.token()
     const res = await fetch(`http://localhost:5000/destination/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(destinationEdit),
     });

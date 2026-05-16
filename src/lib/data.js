@@ -1,6 +1,10 @@
 // //import { revalidatePath } from "next/cache";
 // import { redirect } from "next/navigation";
 
+import { headers } from "next/headers";
+import { auth } from "./auth";
+import { authClient } from "./auth-client";
+
 // export const pushDestinationData = async(destination) => {
 //     'use server';
 //     const res = await fetch('http://localhost:5000/destination', {
@@ -20,6 +24,10 @@
 
 // }
 
+// for authentication token
+// const { token } = await auth.api.getToken({
+//         headers: await headers()
+// })
 
 export const getAllDestinationList = async() => {
     const res = await fetch('http://localhost:5000/destination')
@@ -29,13 +37,32 @@ export const getAllDestinationList = async() => {
 
 
 export const getPlaceDetailsById = async(id) => {
-    const res = await fetch(`http://localhost:5000/destination/${id}`)
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    //console.log("token by Farid: ", token);
+    
+    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const data = await res.json();
     return data;
 }
 
 export const myBookingDestinations = async(id) => {
-    const res = await fetch(`http://localhost:5000/booking/${id}`);
+    //const {data: tokenData } = await authClient.token()
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const res = await fetch(`http://localhost:5000/booking/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
+        }
+    });
     const data = await res.json();
     return data;
 }

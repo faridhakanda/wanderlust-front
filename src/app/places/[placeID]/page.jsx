@@ -12,9 +12,9 @@ import { FiExternalLink } from "react-icons/fi";
 
 const DetailsPage = async ({ params }) => {
   const { placeID } = await params;
-  console.log(placeID, "place id");
+  //console.log(placeID, "place id");
   const placeDetail = await getPlaceDetailsById(placeID);
-  console.log(placeDetail, "place details");
+  //console.log(placeDetail, "place details");
 
   return (
     <div className="mx-auto my-2 justify-center">
@@ -28,11 +28,11 @@ const DetailsPage = async ({ params }) => {
       <div className="bg-slate-50 px-2 py-2 mx-auto my-2 rounded-md shadow-sm">
         <div className="w-xl px-2 py-2">
           <Image
-            className="w-full h-fit "
+            className="w-full h-fit"
             src={placeDetail.imageUrl}
             alt={placeDetail.destinationName}
-            width={500}
-            height={400}
+            width="500"
+            height="400"
           />
           <div className="flex my-2 justify-between">
             <div className="w-84">

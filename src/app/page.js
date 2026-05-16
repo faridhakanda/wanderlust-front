@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const places = await getAllDestinationList();
-  console.log(places);
+  //const places = await getAllDestinationList();
+  //console.log(places);
   return (
     <div>
       <Banner />

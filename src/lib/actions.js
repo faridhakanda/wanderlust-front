@@ -22,13 +22,25 @@
 'use server';
 
 import { redirect } from "next/navigation";
+import { auth } from "./auth";
+import { headers } from "next/headers";
+
+
+// const { token } = await auth.api.getToken({
+//     headers: await headers()
+// })
 
 export const deletePlace = async(placeID) => {
     'use server';
+    // const { data: tokenData } = await auth.api.getToken();
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
     const res = await fetch(`http://localhost:5000/destination/${placeID}`, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
         }
     });
     const data = await res.json();

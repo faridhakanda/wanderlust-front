@@ -8,12 +8,13 @@ export async function proxy(request) {
     const session = await auth.api.getSession({
         headers: await headers()
     })
-    if (session) {
-        return NextResponse.next();
+    if (!session) {
+        //return NextResponse.next();
+        return NextResponse.redirect(new URL('/login', request.url))
     }
-    return NextResponse.redirect(new URL('/login', request.url))
+    //return NextResponse.next();
 }
 
 export const config = {
-    matcher: ['/add-destinations', '/places/:path*', '/mybookings'],
+    matcher: ['/add-destinations', '/places/:path', '/mybookings'],
 }
