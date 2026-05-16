@@ -20,10 +20,10 @@ const LoginPage = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
-        console.log(user, 'user login info!');
+        //console.log(user, 'user login info!');
         const { data, error } = await authClient.signIn.email({
-            email: user.email,
-            password: user.password
+            email: user?.email,
+            password: user?.password
         });
         if (data) {
             redirect('/');

@@ -21,14 +21,14 @@ const RegisterPage = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
-    console.log(user, "user sign up info!");
+    //console.log(user, "user sign up info!");
     const { data, error } = await authClient.signUp.email({
-      email: user.email,
-      name: user.name,
-      password: user.password,
-      image: user.image,
+      email: user?.email,
+      name: user?.name,
+      password: user?.password,
+      image: user?.image,
     });
-    console.log({ data, error });
+    //console.log({ data, error });
     if (data) {
       redirect("/login");
     }
