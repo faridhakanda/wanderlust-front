@@ -13,11 +13,11 @@ export default async function Home() {
     <div>
       <Banner />
       <div>
-        <div className="grid grid-cols-3 bg-lime-200 mx-auto">
+        <div className="grid grid-cols-3 max-w-8xl mx-8 my-4">
           {places.map((place) => (
             <div
               key={place._id}
-              className="bg-slate-50 w-3/4 mx-auto  my-2 rounded-md shadow-sm"
+              className="bg-slate-50  mx-2  my-2 rounded-md shadow-sm"
             >
               <Image
                 className="rounded-ss-md rounded-se-md w-full h-fit"

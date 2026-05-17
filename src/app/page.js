@@ -1,4 +1,5 @@
 import Banner from "@/components/banner";
+import FeatureDestination from "@/components/featured";
 import { getAllDestinationList } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,7 @@ export default async function Home() {
   return (
     <div>
       <Banner />
+      <FeatureDestination />
       {/* <div>
         <div className="grid grid-cols-3 bg-lime-200 mx-auto">
           {places.map((place) => (

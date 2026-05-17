@@ -1,6 +1,9 @@
+import { featuresDestination } from "@/lib/data";
 import { Separator } from "@heroui/react";
+import FeatureDestination from "./featured";
 
 const Banner = () => {
+    //onst features = await featuresDestination()
   return (
     <div className="bg-[url('/assets/Banner.png')] text-white  flex justify-between flex-col items-center  gap-5 h-150">
       <div className="p-10 text-center flex justify-center flex-col items-center gap-3.5 flex-1">
@@ -22,6 +25,7 @@ const Banner = () => {
             View Destination
           </button>
         </div>
+        
       </div>
 
       <div className=" bg-white/30 flex justify-between gap-5 w-full items-center">
@@ -55,6 +59,7 @@ const Banner = () => {
 
         <div className="bg-cyan-500 py-2 px-4">
           <h3>Search</h3>
+          
         </div>
       </div>
     </div>
